@@ -10,10 +10,6 @@
 */ 
 
 
-
-
-
-
 var express = require('express')
 var bodyParser = require('body-parser')
 var routes = require('./routes/routes')
@@ -28,6 +24,7 @@ app.engine('html', require('ejs').renderFile)
 app.listen(3000,()=>{
     console.log('Connect')
 })
+
 
 routes.index(app,fs)
 routes.getData(app,fs)
