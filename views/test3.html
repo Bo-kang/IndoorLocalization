@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    </head>
+    <body>
+        <!-- <p style="text-align: center;"> <strong>R1</strong></p> -->
+        <div style="width:30; height:30px; margin:30px;"> <strong>R1</strong></div> 
+        <div style="width:30; height:30px; margin:10px 10px 10px 30px;"> <strong>&#60RA HISTOGRAM></strong></div> 
+        <div id = RA style="width:30; height:300px;  margin:0px 1000px 10px 30px;"></div> 
+
+        <div style="width:30; height:30px; margin:10px 10px 50px 30px;"> <strong>RA 측정값: </strong></div> 
+        <div style="width:30; height:30px; margin:10px 10px 10px 30px;"> <strong>&#60RB HISTOGRAM></strong></div> 
+        <div id = RB style="width:30; height:300px; margin:0px 1000px 10px 30px;"></div> 
+
+        <div style="width:30; height:30px; margin:10px 10px 50px 30px;"> <strong>RB 측정값: </strong></div>
+        <div style="width:30; height:30px; margin:10px 10px 10px 30px;"> <strong>&#60RC HISTOGRAM></strong></div> 
+        <div id = RC style="width:30; height:300px; margin:0px 1000px 10px 30px;"></div> 
+
+        <div style="width:30; height:30px; margin:10px 10px 50px 30px;"> <strong>RC 측정값: </strong></div>
+        
+        <script type="text/javascript">
+            var check = false
+            
+                function updateData() {
+                    if(check)
+                    {
+                        $('#RA').html('<img src="/home/turtlebot/BoChan/resources/1.png" width="400" height="300"/>'); //이미지 경로 변경
+                        $('#RB').html('<img src="/resources/1.png" width="400" height="300"/>');
+                        $('#RC').html('<img src="/resources/1.png" width="400" height="300"/>');
+                    }
+                    else
+                    {
+                        $('#RA').html('<img src="/home/turtlebot/BoChan/resources/2.png" width="400" height="300"/>');
+                        $('#RB').html('<img src="/resources/2.png" width="400" height="300"/>');
+                        $('#RC').html('<img src="/resources/2.png" width="400" height="300"/>');
+                    }
+                    check = !check
+                }
+                timerID = setInterval("updateData()", 1000); 
+                
+            </script>
+    </body>
+</html>

@@ -13,7 +13,7 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var routes = require('./routes/routes')
-var fs = require('fs')
+
 app = express()
 
 app.use(bodyParser.json())
@@ -26,5 +26,5 @@ app.listen(3000,()=>{
 })
 
 
-routes.index(app,fs)
-routes.getData(app,fs)
+routes.index(app)
+routes.getData(app)
