@@ -1,4 +1,4 @@
-var plotly = require('plotly')('BoChan', 'pHxi14JnwbcDE1clMUuu');
+var plotly = require('plotly')('BoChan', 'eh95JBmUoCVypQd4weal');
 var fs = require('fs')
 
 // var initData = [{x:[], y:[], stream:{token:'itwu0r81ro', maxpoints:200}}];
@@ -24,7 +24,7 @@ module.exports = function (fileName, num) {
 
 
     var valueFromFile
-    valueFromFile = fs.readFileSync(fileName, 'utf-8')
+    valueFromFile = fs.readFileSync(fileName+'.csv', 'utf-8')
     var dic = {}
     var lines = valueFromFile.split('\n')
 
@@ -39,18 +39,7 @@ module.exports = function (fileName, num) {
         }
     }
     
-    var figure = { 'data': [{ 'x': Object.keys(dic), 'y': Object.values(dic), 'type': 'bar' }] }
+    var figure = { 'id' : ''+fileName+num, 'data': [{ 'x': Object.keys(dic), 'y': Object.values(dic) ,'type' : 'bar'}] }
 
-    var imgOpts = {
-        format: 'png',
-        width: 500,
-        height: 500
-    }
-
-    plotly.getImage(figure, imgOpts, function (err, imageStream) {
-        if (err) return console.log(err)
-        var fileStream = fs.createWriteStream('/home/turtlebot/BoChan/resources/'+fileName + num + '.png')
-        imageStream.pipe(fileStream)
-    });
-    return '/home/turtlebot/BoChan/resources/'+fileName + num + '.png'
+    return figure
 }

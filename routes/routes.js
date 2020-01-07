@@ -1,9 +1,9 @@
 var bodyParser = require('body-parser')
 var logics = require('./logics')
-
+var toplot = require('./toPlot')
 module.exports.index = function(app){
     app.get('/',(req,res) =>{
-        res.render('plottest.ejs')
+        res.render('test3.ejs')
     })
     app.get('/test',(req,res) =>{
         res.render('index.ejs', {txt : 'tempFile'})
@@ -15,5 +15,15 @@ module.exports.getData = function(app){
         var fileName = logics.saveData(req.body)
         console.log(req.body)
         res.send(fileName)
+    })
+}
+
+module.exports.sendData = function(){
+    app.post('/toPlot', (req,res) =>{
+        console.log(req.body)
+        var id = req.body.ID
+        var num = req.body.NUM
+        res.json(toplot(id,num))
+        console.log(toplot(id,num))
     })
 }
