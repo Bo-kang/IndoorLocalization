@@ -1,6 +1,6 @@
 # IndoorLocalization
 
-작성일 : 2020.01.08
+작성일 : 2020.01.08 '\
 작성자 : 강보찬 (Bo-kang)
 e-mail : ebfks0301@gmail.com
 
