@@ -12,6 +12,7 @@ module.exports.getFigure = function(id, tagNum){
     var valueFromFile
     valueFromFile = fs.readFileSync(fileName, 'utf-8')
     console.log(valueFromFile)
+    
     var dic = {}
     var lines = valueFromFile.split('\n')
 

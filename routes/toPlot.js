@@ -30,7 +30,7 @@ module.exports = function (fileName, num) {
 
     for (var i in lines) {
         var items = lines[i].split(',')
-        var key = Math.floor(Number(items[num]) * 100)
+        var key = Math.floor(Number(items[num]))
         if (key in dic) {
             dic[key] += 1
         }

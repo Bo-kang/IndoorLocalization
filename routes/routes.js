@@ -3,11 +3,9 @@ var logics = require('./logics')
 var toplot = require('./toPlot')
 module.exports.index = function(app){
     app.get('/',(req,res) =>{
-        res.render('test3.ejs')
+        res.render('index')
     })
-    app.get('/test',(req,res) =>{
-        res.render('index.ejs', {txt : 'tempFile'})
-    })
+
 }
 
 module.exports.getData = function(app){
