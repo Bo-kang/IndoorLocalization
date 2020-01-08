@@ -1,4 +1,3 @@
-var plotly = require('plotly')('BoChan', 'eh95JBmUoCVypQd4weal');
 var fs = require('fs')
 
 // var initData = [{x:[], y:[], stream:{token:'itwu0r81ro', maxpoints:200}}];
