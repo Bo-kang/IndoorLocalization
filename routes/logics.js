@@ -22,7 +22,7 @@ module.exports.saveData = function (data) {
     fileName = '2.csv'
   else if (data.ID == 'Third')
     fileName = '3.csv'
-  else if (data.ID == 'Forth')
+  else if (data.ID == 'Fourth')
     fileName = '4.csv'
 
 
@@ -33,7 +33,6 @@ module.exports.saveData = function (data) {
     var RC = Math.floor(Number(data.RC) * 100)
     fs.appendFile(fd, data.ID + ',' + RA + ',' + RB + ',' + RC + ',' + getPos(RA, RB, RC) + '\n', 'utf8', (err) => {
 
-      console.log('수신 데이터 : ' + data.ID + ',' + RA + ',' + RB + ',' + RC + ',' + getPos(RA, RB, RC))
 
       fs.close(fd, (err) => {
         if (err) throw err;
@@ -41,6 +40,4 @@ module.exports.saveData = function (data) {
       if (err) throw err;
     });
   });
-
-
 }
