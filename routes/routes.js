@@ -57,6 +57,6 @@ module.exports.start = function () {
     app.get('/start', (req, res) => {
         isStart = true
         console.log('START')
-        res.render('index2')
+        res.render('index')
     })
 }
