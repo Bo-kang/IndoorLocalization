@@ -1,6 +1,6 @@
 var bodyParser = require('body-parser')
 var logics = require('./logics')
-var toplot = require('./toPlot')
+
 
 var isStart = false
 
@@ -45,7 +45,7 @@ module.exports.sendData = function () {
         if (isStart) {
             var id = req.body.ID
             var num = req.body.NUM
-            res.json(toplot(id, num))
+            res.json(logics.toPlot(id, num))
         }
         else{
             res.json({a:'not Started'})
