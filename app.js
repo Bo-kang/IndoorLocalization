@@ -9,12 +9,11 @@
         v1.0 서버 최초 완성(2020.01.08)
         v1.1 데이터 시각화 모듈 안정화(2020.01.09)
         v1.2 시각화 모듈 추가/수정, 서버 구동 방안 수정(2020.01.10)
+        v1.3 튀는 값을 어느 정도 잡는 로직을 구현(2020.01.14)
 */ 
 var express = require('express')
 var bodyParser = require('body-parser')
 var routes = require('./routes/routes')
-var toplot = require('./routes/toPlot')
-var isStart = false
 app = express()
 
 app.use(bodyParser.json())
