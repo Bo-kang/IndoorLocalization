@@ -1,6 +1,9 @@
 var fs = require('fs')
 
 var dropStart = false // 값 버리기 시작 확인 플래그 
+
+var dropStarta = [false, false, false, false]
+
 var avgArr =  [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
 
 var getPos = function (RA, RB, RC) { // X,Y의 값을 만드는 함수
@@ -20,7 +23,7 @@ module.exports.toPlot = function (fileName, num) { // 그래프를 그릴때 필
   var sum = 0
   var count = lines.length // 입력받은 센서값의 갯수 (웹에 표시되는 것은 R1의 갯수)
 
-  if (count >= 50) dropStart = true;
+  if (count >= 50) dropStarta[Number(fileName)] = true;
   
   for (var i in lines) {
     var items = lines[i].split(',')
@@ -66,7 +69,7 @@ module.exports.saveData = function (data) {
   var RB = Math.round(Number(data.RB) * 100)
   var RC = Math.round(Number(data.RC) * 100)
   var dId
-  if (dropStart) {
+  if (dropStarta[Number(fileName[0])]) {
     if (!(avgArr[Number(fileName[0])][1] + 10 >= RA && avgArr[Number(fileName[0])][1] - 10 <= RA)) {
       dId = 'RA'
       dropCheck = true
@@ -82,13 +85,14 @@ module.exports.saveData = function (data) {
   }
 
 
-  if (dropStart && dropCheck) {
+  if (dropStarta[Number(fileName[0])] && dropCheck) {
     console.log('-----------------------------------------------------------------------------')
     console.log(avgArr[Number(fileName[0])][1]+ ',' +  avgArr[Number(fileName[0])][2]+ ',' +  avgArr[Number(fileName[0])][3])
     console.log('dropValue '+ data.ID + dId+' : ' + RA + ',' + RB + ',' + RC)
     console.log('-----------------------------------------------------------------------------')
   }
   else {
+    console.log('receiveValue'+ data.ID + ' : ' + RA + ',' + RB + ',' + RC)
     fs.open(fileName, 'a', (err, fd) => {
       if (err) throw err;
       fs.appendFile(fd, data.ID + ',' + RA + ',' + RB + ',' + RC + ',' + getPos(RA, RB, RC) + '\n', 'utf8', (err) => {

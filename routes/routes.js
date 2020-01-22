@@ -30,7 +30,6 @@ module.exports.getData = function () {
     app.post('/getData', (req, res) => {
         if (isStart) {
             var fileName = logics.saveData(req.body)
-            console.log(req.body)
             res.send(fileName)
         }
         else {
