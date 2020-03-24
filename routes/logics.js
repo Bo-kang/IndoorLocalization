@@ -38,17 +38,26 @@ module.exports.toPlot = function (fileName, num) { // 그래프를 그릴때 필
       }
     }
   }
-
+  
   var maxValue = Math.max.apply(null, Object.values(dic))
   var maxIdx = Object.values(dic).indexOf(maxValue)
   var maxY = Object.keys(dic)[maxIdx] // 최빈 값
   var avg = sum / count // 평균 값
+  var variance = 0 // 분산 값
   avg = Math.round(avg)
+
+  for(var i in dic){
+    var temp = i - avg
+    temp = temp * temp * dic[i];
+    variance += temp;
+  }
+
+  variance = variance / count;
  
    if(Number(num) < 4)
    avgArr[Number(fileName)][Number(num)] = avg
 
-  var figure = { 'id': '' + fileName + num, 'data': [{ 'x': Object.keys(dic), 'y': Object.values(dic), 'type': 'bar', }], 'count': count, 'max': maxY, 'avg': avg }
+  var figure = { 'id': '' + fileName + num, 'data': [{ 'x': Object.keys(dic), 'y': Object.values(dic), 'type': 'bar', }], 'count': count, 'max': maxY, 'avg': avg , 'var' : variance}
   return figure
 }
 
