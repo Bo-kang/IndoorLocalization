@@ -18,7 +18,8 @@
 
 
         table {
-
+            margin-left: auto;
+            margin-right: auto;
 
             border: 1px solid black;
         }
@@ -52,7 +53,7 @@
         <div style="float: left; ">
             <table>
                 <tr>
-                    <th colspan="6">RA<%=i%></th>
+                    <th colspan="8">RA<%=i%></th>
                 </tr>
                 <tr>
                     <td>MAX</td>
@@ -61,6 +62,8 @@
                     <td id="RA<%=i%>avg">000</td>
                     <td>VAR</td>
                     <td id="RA<%=i%>var">000</td>
+                    <td>stDev</td>
+                    <td id="RA<%=i%>stDev">000</td>
                 </tr>
             </table>
             <div id='RA<%=i%>' style="height: 500px; ;width: 500px; background-color: black;"></div>
@@ -70,7 +73,7 @@
         <div style="float: left">
             <table>
                 <tr>
-                    <th colspan="6">RB<%=i%></th>
+                    <th colspan="8">RB<%=i%></th>
                 </tr>
                 <tr>
                     <td>MAX</td>
@@ -79,6 +82,8 @@
                     <td id="RB<%=i%>avg">000</td>
                     <td>VAR</td>
                     <td id="RB<%=i%>var">000</td>
+                    <td>stDev</td>
+                    <td id="RB<%=i%>stDev">000</td>
                 </tr>
             </table>
             <div id='RB<%=i%>' style="height: 500px; ;width: 500px; float: left; background-color: blue;"></div>
@@ -88,7 +93,7 @@
         <div style="float: left">
             <table>
                 <tr>
-                    <th colspan="6">RC<%=i%></th>
+                    <th colspan="8">RC<%=i%></th>
                 </tr>
                 <tr>
                     <td>MAX</td>
@@ -97,6 +102,8 @@
                     <td id="RC<%=i%>avg">000</td>
                     <td>VAR</td>
                     <td id="RC<%=i%>var">000</td>
+                    <td>stDev</td>
+                    <td id="RC<%=i%>stDev">000</td>
                 </tr>
             </table>
             <div id='RC<%=i%>' style="height: 500px; ;width: 500px; float: left; background-color: blue;"></div>
@@ -106,7 +113,7 @@
         <div style="float: left">
             <table>
                 <tr>
-                    <th colspan="6">X<%=i%></th>
+                    <th colspan="8">X<%=i%></th>
                 </tr>
                 <tr>
                     <td>MAX</td>
@@ -115,6 +122,8 @@
                     <td id="X<%=i%>avg">000</td>
                     <td>VAR</td>
                     <td id="X<%=i%>var">000</td>
+                    <td>stDev</td>
+                    <td id="X<%=i%>stDev">000</td>
                 </tr>
             </table>
             <div id='X<%=i%>' style="height: 500px; ;width: 500px; float: left; background-color: blue;"></div>
@@ -124,7 +133,7 @@
         <div style="float: left">
             <table>
                 <tr>
-                    <th colspan="6">Y<%=i%></th>
+                    <th colspan="8">Y<%=i%></th>
                 </tr>
                 <tr>
                     <td>MAX</td>
@@ -133,6 +142,8 @@
                     <td id="Y<%=i%>avg">000</td>
                     <td>VAR</td>
                     <td id="Y<%=i%>var">000</td>
+                    <td>stDev</td>
+                    <td id="Y<%=i%>stDev">000</td>
                 </tr>
             </table>
             <div id='Y<%=i%>' style="height: 500px; ;width: 500px; float: left; background-color: blue;"></div>
@@ -157,6 +168,9 @@
             }
             var setVar = function (id, data) {
                 $('#' + id + 'var').html((String)(data.var))
+            }
+            var setStDev = function(id,data){
+                $('#' + id + 'stDev').html((String)(data.var))
             }
             function getID(data) {
                 var num
@@ -217,6 +231,7 @@
                                     setMax(id, data)
                                     setAvg(id, data)
                                     setVar(id,data)
+                                    setStDev(id,data)
                                     drawPlot(id, data)
                                 }
                             }, "json");

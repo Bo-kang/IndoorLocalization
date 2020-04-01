@@ -53,11 +53,13 @@ module.exports.toPlot = function (fileName, num) { // 그래프를 그릴때 필
   }
 
   variance = variance / count;
- 
+  variance = round(variance,2);
+  stDev = Math.sqrt(variance);
+  stDev = rount(stDev,2)
    if(Number(num) < 4)
    avgArr[Number(fileName)][Number(num)] = avg
 
-  var figure = { 'id': '' + fileName + num, 'data': [{ 'x': Object.keys(dic), 'y': Object.values(dic), 'type': 'bar', }], 'count': count, 'max': maxY, 'avg': avg , 'var' : variance}
+  var figure = { 'id': '' + fileName + num, 'data': [{ 'x': Object.keys(dic), 'y': Object.values(dic), 'type': 'bar', }], 'count': count, 'max': maxY, 'avg': avg , 'var' : variance, 'stDev' : stDev}
   return figure
 }
 
